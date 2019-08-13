@@ -1,0 +1,52 @@
+<script type="text/javascript">
+    RED.nodes.registerType('rtsp-websocket',{
+        category: 'input',
+        color: '#FF8C00',
+        defaults: {
+            rtsp_url: {value:""},
+            name: {value: ""},
+            ws_port: {value: 9999},
+            retry_timeout: {value: 30000}
+        },
+        inputs:0,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name|| "RTSP into Websocket";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="rtsp-websocket">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    
+
+    <div class="form-row">
+        <label for="node-input-rtsp_url"><i class="icon-tag"></i> RTSP Url</label>
+        <input type="text" id="node-input-rtsp_url" placeholder="rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov">
+    </div>
+    <div class="form-tips"><b>Tip:</b> You can add camera rtsp! Example: Yonsee camera rtsp url is rtsp://admin:00000000@192.168.1.3/onvif1, if camera'ip is 192.168.0.3 and password is 00000000.</div>
+
+
+
+
+    <div class="form-row">
+        <label for="node-input-ws_port"><i class="icon-tag"></i> Websocket port</label>
+        <input type="text" id="node-input-ws_port" placeholder="9999">
+    </div>
+    <div class="form-tips"><b>Tip:</b> each camera has its own port.</div>
+
+    <div class="form-row">
+        <label for="node-input-retry_timeout"><i class="icon-tag"></i> Retry timeout</label>
+        <input type="text" id="node-input-retry_timeout" placeholder="30000">
+    </div>
+    <div class="form-tips"><b>Tip:</b> if rtsp is down; try fetch after how many mili seconds?.</div>
+
+</script>
+
+<script type="text/x-red" data-help-name="rtsp-websocket">
+    <p>A simple node that converts RTSP into websocket (using FFMPEG) and you can easily use in node-red dashboard!</p>
+</script>
